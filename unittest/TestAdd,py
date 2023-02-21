@@ -1,0 +1,29 @@
+import unittest
+from calculator import Calculator
+
+
+class TestCalculator(unittest.TestCase):
+    # 测试前操作
+    def setUp(self):
+        print("测试开始了")
+    # 测试后操作
+
+    def tearDown(self):
+        print("测试已经结束，请查看测试结果")
+
+    def test_add(self):
+        self.assertEqual(Calculator.add(5, 6), 10)
+
+    def test_sub(self):
+        self.assertNotEqual(Calculator.sub(9, 9), 0)
+
+
+if __name__ == '__main__':
+    # 创建测试套件
+    suit = unittest.TestSuite()
+    suit.addTest(TestCalculator("test_add"))
+    suit.addTest(TestCalculator("test_sub"))
+
+    # 创建测试运行器
+    runner = unittest.TextTestRunner()
+    runner.run(suit)

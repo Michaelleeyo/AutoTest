@@ -8,33 +8,7 @@ python自带的assert
 setup_module/teardown_module 当前文件中，在所有cesium用例执行前后执行
 setup_function/teardown_function 测试函数前后执行
 setup/teardown 测试函数前后执行。也适用于类方法
-例：
-# 功能函数
-def multiply(a, b):
-return a * b
-class TestMultiply:
-# =====Fixture========
-@classmethod
-def setup_class(cls):
-print("setup_class=========>")
-@classmethod
-def teardown_class(cls):
-print("teardown_class=========>")
-def setup_method(self, method):
-print("setup_method----->>")
-def teardown_method(self, method):
-print("teardown_method-->>")
-def setup(self):
-print("setup----->") 
-def teardown(self):
-print("teardown-->")
-# =====测试用例========
-def test_numbers_5_6(self):
-print('test_numbers_5_6')
-assert multiply(5, 6) == 30
-def test_strings_b_2(self):
-print('test_strings_b_2')
-assert multiply('b', 2) == 'bb' 
+fixture被设置为 autouse=True，它将在所有测试用例中自动使用。无需在测试用例中明确调用 my_fixture 函数，fixture 函数会在测试用例执行前自动运行，并在测试用例执行后自动清理。
 3.参数化
 @pytest.mark.parametrize(argnames,argvalues,indirect=False,ids=None,scope=None)
 argnames参数名必填，argvalues参数对应值，一般使用list

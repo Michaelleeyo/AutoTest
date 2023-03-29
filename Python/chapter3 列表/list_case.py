@@ -12,11 +12,25 @@ list.pop() 弹出最后一个值
 list.pop(1) 弹出定义位置的值
 3.remove只会删除找到的第一个，全部删除需要循环
 list.remove('a')
+index()
+方法可以获得列表的下标
+copy.copy()
+对于不可变类型的对象（例如数字、字符串等），它们将被直接复制，
+而对于可变类型的对象（例如列表、字典等），将只复制它们的引用，而不是复制它们所包含的对象。
+copy.deepcopy()
+同时复制它们内部的包含的对象
 '''
-
+import copy
 # 姓名存储列表，依次打印出来
-name = ['zhangsan', 'lisi', 'wangwu']
-print(name[0], name[1], name[-1])
+name = ['zhangsan', 'lisi', 'wangwu', ['zhao', 'qian']]
+name_1 = copy.copy(name)
+name_2 = copy.deepcopy(name)
+name[3][1] = 'sun'
+print(name)
+#['zhangsan', 'lisi', 'wangwu', ['zhao', 'sun']]
+print(name_1)
+#['zhangsan', 'lisi', 'wangwu', ['zhao', 'qian']]
+print(name_2)
 # 每人说问候语
 word = 'nihao'
 print(name[0]+'\tsays\t'+word)
